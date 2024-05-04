@@ -1,0 +1,23 @@
+.form{
+    text-align: center;
+    width: 500px;
+    margin: auto;
+}
+img{
+    width: 100%;
+}
+.card{
+    text-align: center;
+    width:250px;
+    display: block;
+    /* margin: auto; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+.container{
+          display: flex ;
+          justify-content: space-around;
+
+}
+.card2{
+    width: 100px;
+}
