@@ -12,12 +12,35 @@ img{
     display: block;
     /* margin: auto; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    padding: 10px;
 }
 .container{
           display: flex ;
           justify-content: space-around;
 
 }
-.card2{
-    width: 100px;
+.card-2{
+width: 300px;
+display: flex;
+padding: 10px;
+margin: auto;
 }
+.card-2 img{
+    width: 40%;
+    
+}
+.card3{
+    /* text-align:center;
+    width: 200px;
+    display: block; */
+
+}
+
+.container2{
+       display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px 0px;
+}
+   
+    
+
