@@ -24,3 +24,47 @@ console.log(sum,product)
 // [2,6,5,8]
 // acc=2
 
+let evenAddition = num.filter(function(elem){
+    return elem % 2 == 0
+}).map(function(elem){
+    return elem * elem
+}).reduce(function(acc,elem){
+    return acc + elem
+},0)
+
+console.log(evenAddition)
+
+let oddAddition = num.filter(function(elem){
+    return elem % 1 == 0
+}).map(function(elem){
+return elem * elem
+}).reduce(function( acc,elem){
+    return acc + elem
+},0) 
+console.log(oddAddition)
+
+
+// let users = [
+//     {firstName:'Nayan', lastName:'Kale',place:'Banglore'},
+//     {firstName:'Payal', lastName:'Yemde',place:'Banglore'},
+//     {firstName:'Pooja', lastName:'Mandaogade',place:'Bengluru'},   
+// ];
+// let output = users.map(function(user){
+//     return  user.firstName +' '+ user.lastName
+// })
+// console.log(output)
+
+let object = [
+    {firstName:'Nayan', lastName:'Kale',place:'Banglore'},
+    {firstName:'Payal', lastName:'Yemde',place:'Banglore'},
+    {firstName:'Pooja', lastName:'Mandaogade',place:'Bengluru'}, 
+];
+let output = object.filter(function(object){
+    return object.place == 'Banglore'
+}).map(function(object){
+ rteurn 
+})
+console.log(output)
+
+
+
