@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        display: flex;
+        justify-content: center;
+    }
+    h1{
+        text-align: center;
+    }
+</style>
+<body>
+    <div>
+        <input id="text"> 
+        <button onclick="submit1()">Submit</button>
+    </div>
+    <h1 id="target"></h1>
+</body>
+</html>
+
+
+<script>
+
+    function submit1() {
+        var text = document.getElementById('text')
+        var h1 = document.getElementById('target')
+
+        h1.innerText = text.value
+    }
+
+</script>
