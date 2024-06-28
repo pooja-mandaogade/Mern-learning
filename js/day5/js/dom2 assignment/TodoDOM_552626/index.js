@@ -6,6 +6,8 @@ var tbody = document.querySelector('tbody')
 
 form.addEventListener('submit',function(e){
     e.preventDefault()
+    let obj = {
+}
 
     var td1 = document.createElement('td')
     var td2 = document.createElement('td')
