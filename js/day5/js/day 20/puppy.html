@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>puppy</title>
+</head>
+<body>
+    <div>
+    <h1>Cute Puppies</h1>
+    <img src="https://wallpapercave.com/wp/wp2544022.jpg" width="400px">
+    </div>
+    <p>no.of like = <span id ="Like">0</span></p>
+    <p>no.of dislikes = <span id = "Dislike">0</span></p>
+    <button onclick="clicked()">Like</button>
+    <button onclick="clickedme()">Dislike</button>
+    </div>
+</body>
+</html>
+<script>
+
+    var Like = localStorage.getItem('puppyLike')
+    var Dislike = localStorage.getItem('puppyDislike')
+    let Likes = document.getElementById('Like')
+    let Dislikes = document.getElementById('Dislike')
+
+    var Like = 0 , Dislike = 0
+    function clicked(){
+        Like++
+    let Likes=document.getElementById("Like")
+    Likes.innerText=Like
+    }
+    var Dislike = 0
+    function clickedme(){
+        Dislike ++
+    let Dislikes=document.getElementById("Dislike")
+    Dislikes.innerText=Dislike
+    }
+</script>
