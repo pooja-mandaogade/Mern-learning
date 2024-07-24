@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes</title>
+    <style>
+        #shoes{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+        #shoes div{
+            /* border: 1px black solid; */
+            text-align: center;
+            margin: auto;
+            /* padding: 10px; */
+            /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        #shoes div h3+p{
+            text-decoration: line-through;
+        }
+        button{
+            border: 0px;
+            background: rgb(128, 0, 64);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="./cart.html">Go to Cart</a>
+    <div id="shoes">
+    </div>
+</body>
+</html>
+
+<script>
+    let shoes = [
+        {
+            image : 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTf4pi0kUKXaAL4mr03FW43VgG__ns5nboEHhrXWVggxVaPDrwWVx_v2nlh30R6txB2OsOjNuJZQLQtE95QqJNkBE_zm5YQgK5YDF87ZvTg7VenlKA1MfGGrw&usqp=CAc',
+            name : 'Adidas',
+            price : 2499,
+            discount : 1499
+        },
+        {
+            image : 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQEP3TCJd5Y9LCWm7vJpSgJni270yMzAQez0gASmcbbaRChBHxll2AxtOQyzK6WhOCW0K4mruJ4HVBrGGf2WlRJnTo81ZbkE9WEEO8IU-8wjsfMjAQXSlKrj1N3vSBrancUALzhGXU&usqp=CAc',
+            name : 'Puma',
+            price : 1999,
+            discount : 999
+        },
+        {
+            image : 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRRZ4KORHDI6Lf6DUVG2LgpAQ1X2g9RVnhavsg1JoFrRb1zWKoW_ab20_rS8ZEB1tq0CZrIdyP4P_Wh3UcKbG1ByUUuIZBtFZyr8jEBpV4tl3xdJO1BWx1ocg&usqp=CAc',
+            name : 'Adidas',
+            price : 1799,
+            discount : 899
+        },
+        {
+            image : 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQEP3TCJd5Y9LCWm7vJpSgJni270yMzAQez0gASmcbbaRChBHxll2AxtOQyzK6WhOCW0K4mruJ4HVBrGGf2WlRJnTo81ZbkE9WEEO8IU-8wjsfMjAQXSlKrj1N3vSBrancUALzhGXU&usqp=CAc',
+            name : 'Puma',
+            price : 2199,
+            discount : 1199
+        },
+        {
+            image : 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRRZ4KORHDI6Lf6DUVG2LgpAQ1X2g9RVnhavsg1JoFrRb1zWKoW_ab20_rS8ZEB1tq0CZrIdyP4P_Wh3UcKbG1ByUUuIZBtFZyr8jEBpV4tl3xdJO1BWx1ocg&usqp=CAc',
+            name : 'Adidas',
+            price : 2499,
+            discount : 1499
+        },
+        {
+            image : 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQEP3TCJd5Y9LCWm7vJpSgJni270yMzAQez0gASmcbbaRChBHxll2AxtOQyzK6WhOCW0K4mruJ4HVBrGGf2WlRJnTo81ZbkE9WEEO8IU-8wjsfMjAQXSlKrj1N3vSBrancUALzhGXU&usqp=CAc',
+            name : 'Puma',
+            price : 1899,
+            discount : 999
+        },
+        {
+            image : 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRRZ4KORHDI6Lf6DUVG2LgpAQ1X2g9RVnhavsg1JoFrRb1zWKoW_ab20_rS8ZEB1tq0CZrIdyP4P_Wh3UcKbG1ByUUuIZBtFZyr8jEBpV4tl3xdJO1BWx1ocg&usqp=CAc',
+            name : 'Adidas',
+            price : 2099,
+            discount : 1099
+        },
+        {
+            image : 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQEP3TCJd5Y9LCWm7vJpSgJni270yMzAQez0gASmcbbaRChBHxll2AxtOQyzK6WhOCW0K4mruJ4HVBrGGf2WlRJnTo81ZbkE9WEEO8IU-8wjsfMjAQXSlKrj1N3vSBrancUALzhGXU&usqp=CAc',
+            name : 'Puma',
+            price : 2299,
+            discount : 1299
+        },
+        {
+        image : 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQEP3TCJd5Y9LCWm7vJpSgJni270yMzAQez0gASmcbbaRChBHxll2AxtOQyzK6WhOCW0K4mruJ4HVBrGGf2WlRJnTo81ZbkE9WEEO8IU-8wjsfMjAQXSlKrj1N3vSBrancUALzhGXU&usqp=CAc',
+        name : 'Puma',
+        price : 2299,
+        discount : 1299       
+    }
+    ]
+    let container = document.getElementById('shoes')
+
+    function displayShoes(){
+        shoes.map(function(e,i){
+            let img = document.createElement('img')
+            let title = document.createElement('h3')
+            let price = document.createElement('p')
+            let discount = document.createElement('p')
+            let cart = document.createElement('button')
+
+            img.setAttribute('src',e.image)
+
+            title.innerText = e.name
+
+            price.innerText = e.price
+
+            discount.innerText = e.discount
+
+            cart.innerText = 'Add to Cart'
+
+            cart.addEventListener('click', function(){
+                addToCart(i,e.name)
+            })
+
+            let div = document.createElement('div')
+            
+            div.append(img,title,price,discount,cart)
+
+            container.append(div)
+
+        })
+    }
+
+    displayShoes()
+    let productsInCart = JSON.parse(localStorage.getItem('cart'))||[]
+    function addToCart(index,name){
+        let product = productsInCart.filter(function(e,i){
+            return e.name == name
+        })
+        if(product.length == 0){
+            product = shoes.filter(function(e,i){ 
+                return i==index
+            })
+            product[0].qty = 1 
+            productsInCart.push(product[0]) 
+        }else{
+            productsInCart.forEach((element,i) => {
+                if(element.name == name){
+                    productsInCart[i].qty += 1
+                }      
+            });
+        }
+        alert('Product added to cart successfully')
+        localStorage.setItem('cart',JSON.stringify(productsInCart))
+    }
+</script>
