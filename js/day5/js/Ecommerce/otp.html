@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otp</title>
+</head>
+<body>
+    <a href="./mens.html">Go to Cart</a>
+    <h1>OTP</h1>
+
+    <input type="number"> <button onclick="check()">Check</button>
+</body>
+</html>
+<script>
+    let otp = document.querySelector('input')
+
+    function check(){
+        if(otp.value == '1234'){
+            alert('Payment Successfull')
+        }else{
+            alert('Wrong OTP')
+        }
+    }
+</script>

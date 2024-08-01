@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menscart</title>
+</head>
+<style>
+    #cart div{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    img{
+        width: 100px;
+    }
+    #deleteButton{
+        color: red;
+        cursor: pointer;
+    }
+    input[type="number"]{
+        width: 10px;
+    }
+    #mrp{
+        text-decoration: line-through;
+    }
+    
+    body > div {
+        display: flex;
+        justify-content: space-between;
+    }
+    #cart{
+        
+        flex-grow: 7;
+    }
+    #deails{
+        flex-grow: 2;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    #paymentBtn{
+        width: 100%;
+        border-radius: 5px;
+        display: block;
+        background-color: teal;
+        color: white;
+        padding: 7px 0;
+        text-align: center;
+        margin-top: 10px;
+        text-decoration: none;
+    }
+</style>
+<body>
+    <a href="./menscart.html">Go to Mens Product</a>
+    <div>
+        <div id="cart"></div>
+        <div id="details">
+            <p>Total Products : <span id="totalProducts">0</span></p>
+            <p>Total Price : <span id="totalPrice">Rs 0</span></p>
+            <label>Appy Promo</label>
+            <br>
+            <input id="coupon" />
+            <button id="couponBtn">Apply</button>
+            <br>
+            <a href="./payment.html" id="paymentBtn" onclick="storePrice()">Make Payment</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    let cartData = JSON.parse(localStorage.getItem('cart1')) || []
+
+    let cartDiv = document.getElementById('cart')
+    let productSpan = document.getElementById('totalProducts')
+    let priceSpan = document.getElementById('totalPrice')
+    let totalPrice = 0, couponApplied = false
+
+    function storePrice(){
+        localStorage.setItem('totalPrice', totalPrice)
+    }
+
+    function displayCart(products){
+        cartDiv.innerHTML = null
+        totalPrice = 0
+        cartData.map(function(e,i){
+            let img = document.createElement('img')
+            let heading = document.createElement('h3')
+            let mrp = document.createElement('span')
+            let price = document.createElement('p')
+            let qty = document.createElement('input')
+            let decrease = document.createElement('button')
+            let increase = document.createElement('button')
+            let deleteItem = document.createElement('span')
+
+            img.setAttribute('src','https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png')
+
+            heading.innerText = e.name
+
+            mrp.innerText = "Rs " + e.strikedoffprice
+            mrp.setAttribute('id','mrp')
+
+            price.innerText = "Rs " + e.price
+
+            qty.value = e.qty
+            qty.setAttribute('type','number')
+
+            decrease.innerText = '-'
+            if(e.qty==1){
+                decrease.disabled = true
+            }
+            decrease.addEventListener('click',function(){
+                decreaseQty(i)
+            })
+
+            increase.innerText = '+'
+            increase.addEventListener('click',function(){
+                increaseQty(i)
+            })
+
+            deleteItem.innerText = 'Delete'
+            deleteItem.setAttribute('id','deleteButton')
+            deleteItem.addEventListener('click',function(){
+                deleteProduct(i)
+            })
+
+            let div = document.createElement('div')
+
+            div.append(img,heading,mrp,price,decrease,qty,increase,deleteItem)
+
+            cartDiv.append(div)
+
+            totalPrice += e.qty * e.price
+        })
+        
+        priceSpan.innerText = 'Rs ' + totalPrice
+        productSpan.innerText = cartData.length
+
+    }
+    displayCart()
+    function decreaseQty(index){
+        cartData[index].qty--
+        displayCart()
+        localStorage.setItem('cart1',JSON.stringify(cartData))
+    }
+    function increaseQty(index){
+        cartData[index].qty++
+        displayCart()
+        localStorage.setItem('cart1',JSON.stringify(cartData))
+    }
+    function deleteProduct(index){
+        cartData.splice(index,1)
+        displayCart()
+        localStorage.setItem('cart1',JSON.stringify(cartData))
+    }
+
+    let couponInput = document.getElementById('coupon')
+    let couponBtn = document.getElementById('couponBtn')
+
+    couponBtn.addEventListener('click',function(){
+        if(couponInput.value == 'codingroom30' && couponApplied == false){
+            totalPrice = totalPrice * 0.7
+            couponApplied = true
+            alert('Coupon Applied')
+        }else{
+            alert('Invalid Coupon')
+        }
+        priceSpan.innerText = 'Rs ' + totalPrice
+    })
+</script>

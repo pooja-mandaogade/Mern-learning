@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Payment</title>
+</head>
+<style>
+    *{
+        text-align: center;
+    }
+    input{
+        color: black;
+        text-align: left;
+    }
+    #cardDetails{
+        width: 400px;
+        margin: auto;
+        padding: 10px;
+        background-color: rgb(210, 30, 126);
+        border-radius: 5px;
+    }
+    form{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        color: white;
+    }
+    label{
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+<body>
+    <a href="./otp.html">Go to Cart</a>
+    <h1>Payment Page</h1>
+    <div id="details">
+        <p>Total Products : <span id="products"></span></p>
+        <p>Total Price : <span id="price"></span></p>
+    </div>
+    <div id="cardDetails">
+        <form onsubmit="checkCard()">
+            <label>
+                Card number
+                <input type="number" id="cardNumber"/>
+            </label>
+            <label>
+                CVV
+                <input type="number" id="cvv">
+            </label>
+            
+            <label>Expiry Date
+                <input type="month" id="expiry">
+            </label>
+            
+            <label>Card Holder's Name
+                <input type="text">
+            </label>
+
+            <button>Send OTP</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+    let totalPrice = localStorage.getItem('totalPrice') || 0
+    let cartData = JSON.parse(localStorage.getItem('cart1')) || []
+
+    document.getElementById('products').innerText = cartData.length
+    document.getElementById('price').innerText = 'Rs ' + totalPrice
+    function checkCard(){
+        event.preventDefault()
+        let cardNumber = document.getElementById('cardNumber')
+        let cvv = document.getElementById('cvv')
+        let expiry = document.getElementById('expiry')
+        if(cardNumber.value == '1234567890123456' && cvv.value == '123' && expiry.value == '2025-05' ){
+            alert('Otp sent successfully')
+            window.location.href = 'otp.html'
+        }else{
+            alert('Invalid Card')
+        }
+    }
+</script>
