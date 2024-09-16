@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #winner {
+            font-size: 24px;
+            margin: 20px;
+            font-weight: bold;
+        }
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .dice {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 36px;
+            text-align: center;
+            border: 2px solid black;
+            margin: 0 15px;
+            vertical-align: middle;
+        }
+        #roll {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+        .yellow {
+            background-color: yellow;
+            color: black;
+        }
+        .red {
+            background-color: red;
+            color: white;
+        }
+        .blue {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="winner">Press "ROLL THE DICE" to see who wins!</div>
+
+    <div class="dice-container">
+        <div id="member-1" class="dice">A</div>
+        <div id="member-2" class="dice">B</div>
+        <div id="member-3" class="dice">C</div>
+    </div>
+
+    <button id="roll">ROLL THE DICE</button>
+
+    <script>
+       
+        function rollDice() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        
+        function updateDice() {
+          
+            const dice1 = rollDice();
+            const dice2 = rollDice();
+            const dice3 = rollDice();
+
+          
+            document.getElementById('member-1').textContent = dice1;
+            document.getElementById('member-2').textContent = dice2;
+            document.getElementById('member-3').textContent = dice3;
+
+           
+            const scores = [
+                { id: 'member-1', score: dice1 },
+                { id: 'member-2', score: dice2 },
+                { id: 'member-3', score: dice3 }
+            ];
+
+            scores.forEach(dice => {
+                document.getElementById(dice.id).className = 'dice';
+            });
+
+            
+            scores.sort((a, b) => b.score - a.score);
+
+          
+            if (scores[0].score === scores[1].score && scores[1].score === scores[2].score) {
+               
+                scores.forEach(dice => {
+                    document.getElementById(dice.id).classList.add('blue');
+                });
+                document.getElementById('winner').textContent = "It's a tie! All members scored equally.";
+            } else if (scores[0].score === scores[1].score) {
+               
+                document.getElementById(scores[0].id).classList.add('blue');
+                document.getElementById(scores[1].id).classList.add('blue');
+                document.getElementById(scores[2].id).classList.add('red');
+                document.getElementById('winner').textContent = "It's a tie between Member A and Member B!";
+            } else if (scores[1].score === scores[2].score) {
+              
+                document.getElementById(scores[0].id).classList.add('green');
+                document.getElementById(scores[1].id).classList.add('blue');
+                document.getElementById(scores[2].id).classList.add('blue');
+                document.getElementById('winner').textContent = "It's a tie between Member B and Member C!";
+            } else {
+            
+                document.getElementById(scores[0].id).classList.add('green');
+                document.getElementById(scores[1].id).classList.add('yellow');
+                document.getElementById(scores[2].id).classList.add('red');
+                document.getElementById('winner').textContent = `Member ${scores[0].id.slice(-1)} wins!`;
+            }
+        }
+
+        
+        document.getElementById('roll').addEventListener('click', updateDice);
+    </script>
+
+</body>
+</html>
