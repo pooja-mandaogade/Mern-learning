@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #movies{
+        display:flex;
+        justify-content:space-evenly;
+        margin-top: 50px;
+        flex-wrap: wrap;
+    
+    }
+    form{
+        text-align: center;
+        border: 100px;
+    }
+</style>
+<body>
+    <form>
+        <input type="text" id="search" />
+        <button>Search</button>
+    </form>
+    <div id="movies">
+        <!-- <div>
+            <img src="https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg">
+            <h1>Batman</h1>
+            <h3>2005</h3>
+        </div>
+        <div>
+            <img src="https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg">
+            <h1>Batman</h1>
+            <h3>2005</h3>
+        </div> -->
+    </div>
+</body>
+</html>
+
+<script>
+    document.querySelector('form').addEventListener('submit',search)
+    function search(e){
+        e.preventDefault()
+        var movie = document.getElementById('search').value
+
+        fetch(`https://www.omdbapi.com/?apikey=5a46804e&s=${movie}`)
+        .then(function(res){
+            return res.json()
+        })
+        .then(function(res){
+            displayMovies(res.Search)
+        })
+        .catch(function(err){
+
+        })
+
+    }
+
+    var moviesDiv = document.getElementById('movies')
+
+    function displayMovies(data){
+        console.log(data)
+        data.map(function(e){
+
+            let img = document.createElement('img')
+            let h1  = document.createElement('h1')
+            let h3 = document.createElement('h3')
+            
+            img.setAttribute('src',e.Poster)
+
+            h1.innerText = e.Title
+
+            h3.innerText = e.Year
+
+            let div = document.createElement('div')
+
+            div.append(img,h1,h3)
+
+            moviesDiv.append(div)
+
+
+
+        })
+
+
+
+    }
+</script>
