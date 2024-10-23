@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>virtual food odering system</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.food-items {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #ffcc00;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #e6b800;
+}
+
+.order-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.food-display {
+    margin-top: 30px;
+    display: none;
+}
+
+.food-display img {
+    max-width: 300px;
+    height: auto;
+    border: 2px solid #333;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Welcome to McDonald's</h1>
+        <div class="food-items">
+            <h3>Select Your Food:</h3>
+            <label><input type="checkbox" id="burger" value="burger"> Burger</label><br>
+            <label><input type="checkbox" id="fries" value="fries"> Fries</label><br>
+            <label><input type="checkbox" id="pizza" value="pizza"> Pizza</label><br>
+            <label><input type="checkbox" id="icecream" value="icecream"> Ice Cream</label><br>
+        </div>
+        <button id="orderfood">Order Food</button>
+
+        <div id="orderstatus" class="order-status"></div>
+
+        <div id="foodDisplay" class="food-display">
+            <img id="foodImage" src="https://img.freepik.com/premium-photo/buger-pork-hamburger-cheese-meat-veggie_919652-13376.jpg" alt="Your Food" />
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+<script>
+    document.getElementById("orderFood").addEventListener("click",);
+
+    var selectedItems = [];
+
+    var burger = document.getElementById("burger");
+    var fries = document.getElementById("fries");
+    var pizza = document.getElementById("pizza");
+    var icecream = document.getElementById("icecream");
+
+</script>
